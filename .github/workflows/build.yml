@@ -18,12 +18,15 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+          cache: gradle
       
       - name: 🛠 Setup Gradle
         uses: gradle/gradle-build-action@v2
       
       - name: 📜 Run Build
-        run: ./gradlew clean build
+        run: |
+          sudo chmod a+x gradlew
+          ./gradlew clean build
 
       - name: 📦 Upload Artifacts
         uses: actions/upload-artifact@v3
