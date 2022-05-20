@@ -37,7 +37,7 @@ jobs:
       - name: 🎉 Release
         uses: ncipollo/release-action@v1
         with:
-          commit: $GITHUB_SHA
-          tag: v1.0.$GITHUB_RUN_NUMBER
+          commit: ${{ env.GITHUB_SHA }}
+          tag: "v1.0.$GITHUB_RUN_NUMBER"
           generateReleaseNotes: true
           artifacts: "lib/build/libs/*.jar"
