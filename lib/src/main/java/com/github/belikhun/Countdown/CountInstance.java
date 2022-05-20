@@ -61,6 +61,9 @@ public class CountInstance {
 						callback.complete(bar);
 					}
 
+					if (remain < -4.8)
+						bar.setProgress(0);
+
 					ended = true;
 					if (remain < -5) {
 						cancel();
