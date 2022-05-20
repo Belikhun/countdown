@@ -1,0 +1,7 @@
+shutdown {
+	length brigadier:integer {
+		message brigadier:string greedy_phrase;
+	}
+	
+	cancel;
+}

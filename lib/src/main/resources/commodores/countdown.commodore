@@ -1,0 +1,5 @@
+countdown {
+	length brigadier:integer {
+		message brigadier:string greedy_phrase;
+	}
+}
