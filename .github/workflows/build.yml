@@ -32,13 +32,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: countdown
-          path: build/libs/*.jar
+          path: lib/build/libs/*.jar
 
       - name: 🎉 Release
-        uses: softprops/action-gh-release@v1
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: v1.0.${{ env.GITHUB_RUN_NUMBER }}
-          generate_release_notes: true
-          files: |
-            build/libs/countdown.jar
-            build/libs/countdown-lib.jar
+          generateReleaseNotes: true
+          artifacts: "lib/build/libs/*.jar"
