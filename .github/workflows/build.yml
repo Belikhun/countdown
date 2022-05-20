@@ -37,6 +37,7 @@ jobs:
       - name: 🎉 Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: v1.0.${{ env.GITHUB_RUN_NUMBER }}
           generate_release_notes: true
           files: |
             build/libs/countdown.jar
