@@ -12,7 +12,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class CountInstance {
+	public static ChatColor timeColor = ChatColor.of("#abcfff");
 	public static ArrayList<CountInstance> instances = new ArrayList<>();
 
 	public BossBar bar;
@@ -104,6 +107,12 @@ public class CountInstance {
 				bar.removeAll();
 			}
 		}, 5000);
+	}
+
+	public static String readableTime(double seconds) {
+		return (seconds > 120d)
+			? String.format("%s%.1fm&r", timeColor, (seconds / 60d))
+			: String.format("%s%.3fs&r", seconds);
 	}
 
 	public static void handlePlayerJoin(Player player) {

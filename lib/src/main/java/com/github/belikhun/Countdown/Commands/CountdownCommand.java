@@ -46,7 +46,7 @@ public class CountdownCommand implements CommandExecutor {
 
 			@Override
 			public void update(BossBar bar, double remain) {
-				String message = String.format("&r&a%s&r sau &b%.3fs", title, remain);
+				String message = String.format("&r&a%s&r sau %s", title, CountInstance.readableTime(remain));
 				bar.setTitle(Countdown.colorize(message));
 			}
 

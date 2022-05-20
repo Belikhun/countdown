@@ -80,11 +80,10 @@ public class ShutdownCommand implements CommandExecutor {
 			@Override
 			public void update(BossBar bar, double remain) {
 				ChatColor textColor = ChatColor.of("#ffabc0");
-				ChatColor numberColor = ChatColor.of("#abcfff");
 
 				String message = (reason != null)
-					? String.format("&r%s&lTắt Máy Chủ&r sau %s%.3fs &7(%s)", textColor, numberColor, remain, reason)
-					: String.format("&r%s&lTắt Máy Chủ&r sau %s%.3fs", textColor, numberColor, remain);
+					? String.format("&r%s&lTắt Máy Chủ&r sau %s &7(%s)", textColor, remain, reason)
+					: String.format("&r%s&lTắt Máy Chủ&r sau %s", textColor, CountInstance.readableTime(remain));
 
 				bar.setTitle(Countdown.colorize(message));
 			}
