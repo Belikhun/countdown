@@ -112,7 +112,7 @@ public class CountInstance {
 	public static String readableTime(double seconds) {
 		return (seconds > 120d)
 			? String.format("%s%.1fm&r", timeColor, (seconds / 60d))
-			: String.format("%s%.3fs&r", seconds);
+			: String.format("%s%.3fs&r", timeColor, seconds);
 	}
 
 	public static void handlePlayerJoin(Player player) {
