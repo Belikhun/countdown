@@ -40,7 +40,7 @@ public class ShutdownCommand implements CommandExecutor {
 				return true;
 			}
 
-			instance.stop("&a&lTắt Máy Chủ Đã Được Hủy!");
+			instance.stop("&a&lĐã Hủy Tắt Máy Chủ!");
 			instance.bar.setColor(BarColor.GREEN);
 			Bukkit.broadcastMessage("Đã hủy tắt máy chủ.");
 			instance = null;
@@ -79,11 +79,11 @@ public class ShutdownCommand implements CommandExecutor {
 
 			@Override
 			public void update(BossBar bar, double remain) {
-				ChatColor textColor = ChatColor.of("#ffabc0");
+				ChatColor textColor = ChatColor.of("#ff3b62");
 
 				String message = (reason != null)
-					? String.format("&r%s&l⚠⚠⚠ Tắt Máy Chủ ⚠⚠⚠&r sau %s &7(%s)", textColor, remain, reason)
-					: String.format("&r%s&l⚠⚠⚠ Tắt Máy Chủ ⚠⚠⚠&r sau %s", textColor, CountInstance.readableTime(remain));
+					? String.format("&r%s&l⚠⚠⚠ TẮT MÁY CHỦ ⚠⚠⚠&r sau %s &7(%s)", textColor, remain, reason)
+					: String.format("&r%s&l⚠⚠⚠ TẮT MÁY CHỦ ⚠⚠⚠&r sau %s", textColor, CountInstance.readableTime(remain));
 
 				bar.setTitle(Countdown.colorize(message));
 			}

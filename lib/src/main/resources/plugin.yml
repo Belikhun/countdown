@@ -6,8 +6,8 @@ api-version: "1.18"
 
 commands:
   countdown:
-    description: "Bắt đầu đếm ngược"
-    usage: /countdown <length> [message]
+    description: "Điều khiển đếm ngược"
+    usage: /countdown <start|stop|stopall>
     permission: countdown.countdown
     permission-message: Bạn không có quyền countdown.countdown
     aliases:

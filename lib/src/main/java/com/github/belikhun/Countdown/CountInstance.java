@@ -15,7 +15,12 @@ import org.bukkit.scheduler.BukkitTask;
 import net.md_5.bungee.api.ChatColor;
 
 public class CountInstance {
-	public static ChatColor timeColor = ChatColor.of("#abcfff");
+	public static ChatColor timeColor[] = new ChatColor[] {
+		ChatColor.of("#ff9466"),
+		ChatColor.of("#4efcbd"),
+		ChatColor.of("#66bdff")
+	};
+
 	public static ArrayList<CountInstance> instances = new ArrayList<>();
 
 	public BossBar bar;
@@ -113,9 +118,11 @@ public class CountInstance {
 	}
 
 	public static String readableTime(double seconds) {
-		return (seconds > 120d)
-			? String.format("%s%.1fm&r", timeColor, (seconds / 60d))
-			: String.format("%s%.3fs&r", timeColor, seconds);
+		return (seconds / 3600d > 1)
+			? String.format("%s%.1fh&r", timeColor[0], (seconds / 3600d))
+			: ((seconds > 120d)
+				? String.format("%s%.1fm&r", timeColor[1], (seconds / 60d))
+				: String.format("%s%.3fs&r", timeColor[2], seconds));
 	}
 
 	public static void handlePlayerJoin(Player player) {

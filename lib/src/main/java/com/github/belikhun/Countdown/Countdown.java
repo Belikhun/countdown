@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
+import javax.annotation.Nullable;
+
 import com.github.belikhun.Countdown.Commands.CountdownCommand;
 import com.github.belikhun.Countdown.Commands.ShutdownCommand;
 import com.mojang.brigadier.tree.LiteralCommandNode;
@@ -55,6 +57,8 @@ public class Countdown extends JavaPlugin {
 	public void onDisable() {
 		if (ShutdownCommand.instance != null)
 			ShutdownCommand.instance.cancel();
+
+		CountdownCommand.stopAll();
 	}
 
 	public void loadCommodore(Command command) {
@@ -77,5 +81,21 @@ public class Countdown extends JavaPlugin {
 
 	public static String colorize(String string) {
 		return ChatColor.translateAlternateColorCodes('&', string);
+	}
+
+	public static int parseTime(String input) {
+		try {
+			if (input.endsWith("d")) {
+				return Integer.parseInt(input.replace("d", "")) * 86400;
+			} else if (input.endsWith("h")) {
+				return Integer.parseInt(input.replace("h", "")) * 3600;
+			} else if (input.endsWith("m")) {
+				return Integer.parseInt(input.replace("m", "")) * 60;
+			} else {
+				return Integer.parseInt(input);
+			}
+		} catch(NumberFormatException e) {
+			return -1;
+		}
 	}
 }

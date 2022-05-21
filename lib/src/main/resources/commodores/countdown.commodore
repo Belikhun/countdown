@@ -1,5 +1,13 @@
 countdown {
-	length brigadier:integer {
-		message brigadier:string greedy_phrase;
+	start {
+		length brigadier:integer {
+			message brigadier:string greedy_phrase;
+		}
 	}
+
+	stop {
+		id brigadier:integer;
+	}
+
+	stopall;
 }
