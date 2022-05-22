@@ -4,8 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
-import javax.annotation.Nullable;
-
 import com.github.belikhun.Countdown.Commands.CountdownCommand;
 import com.github.belikhun.Countdown.Commands.ShutdownCommand;
 import com.mojang.brigadier.tree.LiteralCommandNode;

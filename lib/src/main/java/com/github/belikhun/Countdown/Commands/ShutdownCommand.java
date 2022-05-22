@@ -53,7 +53,7 @@ public class ShutdownCommand implements CommandExecutor {
 		}
 
 		String message = null;
-		int length = Integer.parseInt(args[0]);
+		int length = Countdown.parseTime(args[0]);
 
 		if (args.length >= 2)
 			message = StringUtils.join(Arrays.copyOfRange(args, 1, args.length), ' ');
@@ -71,8 +71,8 @@ public class ShutdownCommand implements CommandExecutor {
 			@Override
 			public void begin(BossBar bar) {
 				String message = (reason != null)
-					? String.format("&rMáy chủ sẽ tắt sau &b%ds &rnữa! &7(lí do: %s)", seconds, reason)
-					: String.format("&rMáy chủ sẽ tắt sau &b%ds &rnữa!", seconds);
+					? String.format("&rMáy chủ sẽ tắt sau &b%s&r nữa! &7(lí do: %s)", CountInstance.readableTime(seconds), reason)
+					: String.format("&rMáy chủ sẽ tắt sau &b%s&r nữa!", CountInstance.readableTime(seconds));
 				
 				Bukkit.broadcastMessage(Countdown.colorize(message));
 			}

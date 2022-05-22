@@ -2,6 +2,7 @@ package com.github.belikhun.Countdown.Commands;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 import com.github.belikhun.Countdown.CountInstance;
 import com.github.belikhun.Countdown.Countdown;
@@ -30,7 +31,10 @@ public class CountdownCommand implements CommandExecutor {
 
 				@Override
 				public void begin(BossBar bar) {
+					String message = String.format("&rSự kiện &a%s&r sẽ bắt đầu sau &r%s nữa!",
+						title, CountInstance.readableTime(seconds));
 					
+					Bukkit.broadcastMessage(Countdown.colorize(message));
 				}
 	
 				@Override
@@ -43,6 +47,9 @@ public class CountdownCommand implements CommandExecutor {
 				public void complete(BossBar bar) {
 					String message = String.format("&r&7#%d &a%s&r đã bắt đầu!", id, title);
 					bar.setTitle(Countdown.colorize(message));
+					Bukkit.broadcastMessage(Countdown.colorize("Sự kiện " + message));
+
+					removeInstance();
 				}
 			});
 		}
@@ -51,6 +58,12 @@ public class CountdownCommand implements CommandExecutor {
 			count.stop(String.format("Đã hủy bỏ &d%s", title));
 			Bukkit.broadcastMessage(Countdown.colorize(
 				String.format("Sự kiện &7(#%d) &d%s &fđã bị hủy!", id, title)));
+
+			removeInstance();
+		}
+
+		public void removeInstance() {
+			instances.remove(this);
 		}
 	}
 	
@@ -128,7 +141,13 @@ public class CountdownCommand implements CommandExecutor {
 	}
 
 	public static void stopAll() {
-		for (Instance instance : instances)
+		// Use iterator to avoid ConcurrentModificationException
+		Iterator<Instance> iterator = instances.iterator();
+
+		while (iterator.hasNext()) {
+			Instance instance = iterator.next();
+			iterator.remove();
 			instance.stop();
+		}
 	}
 }
