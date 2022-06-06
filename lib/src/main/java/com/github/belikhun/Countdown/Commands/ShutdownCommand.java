@@ -82,8 +82,8 @@ public class ShutdownCommand implements CommandExecutor {
 				ChatColor textColor = ChatColor.of("#ff3b62");
 
 				String message = (reason != null)
-					? String.format("&r%s&l⚠⚠⚠ TẮT MÁY CHỦ ⚠⚠⚠&r sau %s &7(%s)", textColor, remain, reason)
-					: String.format("&r%s&l⚠⚠⚠ TẮT MÁY CHỦ ⚠⚠⚠&r sau %s", textColor, CountInstance.readableTime(remain));
+					? String.format("&r%s&l⚠⚠⚠ TẮT MÁY CHỦ ⚠⚠⚠&r sau &b%s&r &7(%s)", textColor, CountInstance.readableTime(remain), reason)
+					: String.format("&r%s&l⚠⚠⚠ TẮT MÁY CHỦ ⚠⚠⚠&r sau &b%s&r", textColor, CountInstance.readableTime(remain));
 
 				bar.setTitle(Countdown.colorize(message));
 			}

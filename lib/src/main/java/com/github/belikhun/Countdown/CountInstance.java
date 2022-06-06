@@ -50,7 +50,7 @@ public class CountInstance {
 				if (progress >= 0) {
 					bar.setProgress(progress);
 	
-					if (progress < .2)
+					if (progress < .3)
 						color = BarColor.RED;
 					else if (progress < .6)
 						color = BarColor.YELLOW;
@@ -119,10 +119,10 @@ public class CountInstance {
 
 	public static String readableTime(double seconds) {
 		return (seconds / 3600d > 1)
-			? String.format("%s%.1fh&r", timeColor[0], (seconds / 3600d))
+			? String.format("%s%.0fh %.2fm&r", timeColor[0], Math.floor(seconds / 3600d), (seconds % 3600d) / 60d)
 			: ((seconds > 300d)
-				? String.format("%s%.2fm&r", timeColor[1], (seconds / 60d))
-				: String.format("%s%.3fs&r", timeColor[2], seconds));
+				? String.format("%s%.0fm %.0fs&r", timeColor[1], Math.floor(seconds / 60d), (seconds % 60d))
+				: String.format("%s%.1fs&r", timeColor[2], seconds));
 	}
 
 	public static void handlePlayerJoin(Player player) {
