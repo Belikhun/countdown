@@ -71,7 +71,7 @@ public class ShutdownCommand implements CommandExecutor {
 			@Override
 			public void begin(BossBar bar) {
 				String message = (reason != null)
-					? String.format("&rMáy chủ sẽ tắt sau &b%s&r nữa! &7(lí do: %s)", CountInstance.readableTime(seconds), reason)
+					? String.format("&rMáy chủ sẽ tắt sau &b%s&r nữa! &7(lí do: %s&7)", CountInstance.readableTime(seconds), reason)
 					: String.format("&rMáy chủ sẽ tắt sau &b%s&r nữa!", CountInstance.readableTime(seconds));
 				
 				Bukkit.broadcastMessage(Countdown.colorize(message));
@@ -82,7 +82,7 @@ public class ShutdownCommand implements CommandExecutor {
 				ChatColor textColor = ChatColor.of("#ff3b62");
 
 				String message = (reason != null)
-					? String.format("&r%s&l⚠⚠⚠ TẮT MÁY CHỦ ⚠⚠⚠&r sau &b%s&r &7(%s)", textColor, CountInstance.readableTime(remain), reason)
+					? String.format("&r%s&l⚠⚠⚠ TẮT MÁY CHỦ ⚠⚠⚠&r sau &b%s&r &7(%s&7)", textColor, CountInstance.readableTime(remain), reason)
 					: String.format("&r%s&l⚠⚠⚠ TẮT MÁY CHỦ ⚠⚠⚠&r sau &b%s&r", textColor, CountInstance.readableTime(remain));
 
 				bar.setTitle(Countdown.colorize(message));
