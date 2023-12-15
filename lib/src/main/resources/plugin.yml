@@ -2,7 +2,7 @@ name: Countdown
 main: com.github.belikhun.Countdown.Countdown
 author: Belikhun
 version: '1.0'
-api-version: "1.18"
+api-version: "1.20"
 
 commands:
   countdown:

@@ -16,7 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import me.lucko.commodore.Commodore;
 import me.lucko.commodore.CommodoreProvider;
-import me.lucko.commodore.file.CommodoreFileFormat;
+import me.lucko.commodore.file.CommodoreFileReader;
 import net.md_5.bungee.api.ChatColor;
 
 public class Countdown extends JavaPlugin {
@@ -68,7 +68,7 @@ public class Countdown extends JavaPlugin {
 			if (file == null)
 				throw new FileNotFoundException("File " + file + " does not exist!");
 
-			LiteralCommandNode<?> commodoreFile = CommodoreFileFormat.parse(getResource("commodores/" + filename));
+			LiteralCommandNode<?> commodoreFile = CommodoreFileReader.INSTANCE.parse(getResource("commodores/" + filename));
 			commodore.register(command, commodoreFile);
 			log.info("Loaded commodore file " + filename);
 		} catch(Exception e) {

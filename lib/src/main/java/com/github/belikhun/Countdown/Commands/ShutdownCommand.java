@@ -8,7 +8,7 @@ import com.github.belikhun.Countdown.CountInstance;
 import com.github.belikhun.Countdown.Countdown;
 import com.github.belikhun.Countdown.CountInstance.CountdownCallback;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BossBar;
